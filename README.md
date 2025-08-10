@@ -1,84 +1,48 @@
-# Turborepo starter
+# dpin-uptime
 
-This Turborepo starter is maintained by the Turborepo core team.
+## Overview
+`dpin-uptime` is a decentralized uptime monitoring service. It allows for monitoring of website availability and performance, leveraging a network of validators to perform checks and record uptime data.
 
-## Using this example
+## Stack Used
+This project is a monorepo managed with **Turborepo** and uses **Bun** as its package manager.
 
-Run the following command:
+*   **Frontend**: Built with **Next.js**, **React**, and **TypeScript**.
+*   **Backend (API)**: Developed using **Node.js**, **Express.js**, and **TypeScript**.
+*   **Database**: **PostgreSQL**, managed with **Prisma ORM**.
+*   **UI Components**: Custom components are developed within the `packages/ui` workspace.
 
-```sh
-npx create-turbo@latest
-```
+## Installation
 
-## What's inside?
+To set up the project locally, follow these steps:
 
-This Turborepo includes the following packages/apps:
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-repo/dpin-uptime.git
+    cd dpin-uptime
+    ```
 
-### Apps and Packages
+2.  **Install dependencies**:
+    This project uses `bun` as its package manager.
+    ```bash
+    bun install
+    ```
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+3.  **Database Setup**:
+    Ensure you have a PostgreSQL database running and set the `DATABASE_URL` environment variable in a `.env` file at the root of the project.
+    Example `.env` file:
+    ```
+    DATABASE_URL="postgresql://user:password@localhost:5432/dpin_uptime_db"
+    ```
+    Then, apply Prisma migrations to set up your database schema:
+    ```bash
+    bun prisma migrate dev
+    ```
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+4.  **Run the development servers**:
+    ```bash
+    bun run dev
+    ```
+    This command will start both the frontend and API development servers.
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Documentation
+For a detailed understanding of the project architecture, data flow, and component breakdown, please refer to the [Documentation](documentation.md).
